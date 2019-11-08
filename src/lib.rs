@@ -15,21 +15,21 @@ pub const ASSERT: [(); 1] = [()];
 
 #[macro_export]
 macro_rules! cfn_assert {
-    ($x:expr $(,)?) => {
+    ($x:expr $(,)*) => {
         let _ = $crate::ASSERT[!{let cond: bool = $x; cond} as usize];
     }
 }
 
 #[macro_export]
 macro_rules! cfn_assert_eq {
-    ($x:expr, $y:expr $(,)?) => {
+    ($x:expr, $y:expr $(,)*) => {
         $crate::cfn_assert!($x == $y)
     }
 }
 
 #[macro_export]
 macro_rules! cfn_assert_ne {
-    ($x:expr, $y:expr $(,)?) => {
+    ($x:expr, $y:expr $(,)*) => {
         $crate::cfn_assert!($x != $y)
     }
 }
