@@ -1,9 +1,20 @@
 [package]
 name = "const_fn_assert"
 version = "0.1.0"
-authors = ["Nicolas Poelen <powlpy@gmail.com>"]
+authors = ["Nicolas Poelen"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "Assertions for const functions."
+license = "MIT"
+keywords = ["macro", "assert", "const", "fn", "testing"]
+categories = ["no-std", "rust-patterns", "development-tools::testing"]
+readme = "README.md"
+repository = "https://github.com/powlpy/const_fn_assert"
+documentation = "https://docs.rs/const_fn_assert"
 
-[dependencies]
+exclude = [
+    ".travis.yml"
+]
+
+[badges]
+travis-ci = { repository = "powlpy/const_fn_assert" }

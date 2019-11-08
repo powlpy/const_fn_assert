@@ -1,0 +1,15 @@
+language: rust
+rust:
+  - stable
+  - beta
+  - nightly
+  - 1.31.1 # This version is tested because "const fn" are introduced in 1.31.0 
+
+script:
+  - cargo build
+  - cargo test
+  
+matrix:
+  allow_failures:
+    - rust: nightly
+  fast_finish: true
