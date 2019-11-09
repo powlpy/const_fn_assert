@@ -19,8 +19,6 @@ const fn sub_fn(x: u8) -> u8 {
     
 const _TEST_ASSERT: u8 = sub_fn(1);
     
-// _TEST_ASSERT_FAIL is compile-fail
-    
 #[test]
 fn test_sub_fn_assert(){
     let _ = sub_fn(1);
