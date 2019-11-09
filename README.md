@@ -14,9 +14,6 @@ This crate provide macros assertions who can be used in `const` function.
 ## Example
 
 ```rust
-#[macro_use]
-extern crate const_fn_assert;
-
 const fn my_const_fn(x: u8) -> u8 {
     cfn_assert!(x < 5);
     x + 1
@@ -29,7 +26,7 @@ fn main() {
 }
 ```
 
-With this example, this function below panic when running :
+The function below panic when running :
 ```rust
 fn fail() {
     let _var = my_const_fn(6); //thread 'main' panicked at 'index out of bounds: the len is 1 but the index is 1'
