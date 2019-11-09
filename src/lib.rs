@@ -59,10 +59,16 @@ And this code don't compile :
 const _CONST: u8 = my_const_fn(6); //~ ERROR any use of this value will cause an error
 # fn main() { }
 ```
+
+# Advices
+
+Since the panic message is not really descriptive, it is advisable to create 
+a non-constant version of your functions using normal assertions.
 */
 
 #![no_std]
 #![doc(html_root_url = "https://docs.rs/const_fn_assert")]
+
 #![forbid(const_err)]
 
 #[doc(hidden)]
@@ -71,9 +77,7 @@ pub const ASSERT: [(); 1] = [()];
 
 #[doc(hidden)]
 #[allow(dead_code)]
-pub const fn bool_assert(x: bool) -> bool {
-    x
-}
+pub const fn bool_assert(x: bool) -> bool { x }
 
 #[macro_export]
 macro_rules! cfn_assert {
