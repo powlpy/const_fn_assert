@@ -4,6 +4,7 @@
 [![Crate](https://img.shields.io/crates/v/const_fn_assert.svg)](https://crates.io/crates/const_fn_assert)
 [![Documentation](https://docs.rs/const_fn_assert/badge.svg)](https://docs.rs/const_fn_assert)
 ![Minimum rustc version](https://img.shields.io/badge/rustc-1.31+-yellow.svg)
+[![License](https://img.shields.io/crates/l/const_fn_assert.svg)](https://github.com/powlpy/const_fn_assert/blob/master/LICENSE)
 
 This crate provide macros assertions who can be used in `const` function.
 
