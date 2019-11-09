@@ -27,7 +27,7 @@ fn main() {
 Inputs are type-checked as booleans:
 
 ```compile_fail
-# #[macro_use] extern crate const_fn_assert; 
+# #[macro_use] extern crate const_fn_assert;
 fn main() {
     cfn_assert!(!0);
 }
@@ -63,7 +63,6 @@ const _CONST: u8 = my_const_fn(6); //~ ERROR any use of this value will cause an
 
 #![no_std]
 #![doc(html_root_url = "https://docs.rs/const_fn_assert")]
-
 #![forbid(const_err)]
 
 #[doc(hidden)]
@@ -72,27 +71,29 @@ pub const ASSERT: [(); 1] = [()];
 
 #[doc(hidden)]
 #[allow(dead_code)]
-pub const fn bool_assert(x: bool) -> bool { x }
+pub const fn bool_assert(x: bool) -> bool {
+    x
+}
 
 #[macro_export]
 macro_rules! cfn_assert {
     ($x:expr $(,)*) => {
         let _ = $crate::ASSERT[!$crate::bool_assert($x) as usize];
-    }
+    };
 }
 
 #[macro_export]
 macro_rules! cfn_assert_eq {
     ($x:expr, $y:expr $(,)*) => {
         $crate::cfn_assert!($x == $y)
-    }
+    };
 }
 
 #[macro_export]
 macro_rules! cfn_assert_ne {
     ($x:expr, $y:expr $(,)*) => {
         $crate::cfn_assert!($x != $y)
-    }
+    };
 }
 
 #[macro_export]
@@ -100,7 +101,7 @@ macro_rules! cfn_debug_assert {
     ($x:expr $(,)*) => {
         #[cfg(debug_assertions)]
         $crate::cfn_assert!($x)
-    }
+    };
 }
 
 #[macro_export]
@@ -108,7 +109,7 @@ macro_rules! cfn_debug_assert_eq {
     ($x:expr, $y:expr $(,)*) => {
         #[cfg(debug_assertions)]
         $crate::cfn_assert_eq!($x, $y)
-    }
+    };
 }
 
 #[macro_export]
@@ -116,5 +117,5 @@ macro_rules! cfn_debug_assert_ne {
     ($x:expr, $y:expr $(,)*) => {
         #[cfg(debug_assertions)]
         $crate::cfn_assert_ne!($x, $y)
-    }
+    };
 }
