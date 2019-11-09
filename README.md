@@ -22,7 +22,7 @@ const fn my_const_fn(x: u8) -> u8 {
 const _CONST: u8 = my_const_fn(1);
 
 fn main() {
-    let mut _var = my_const_fn(2);
+    let _var = my_const_fn(2);
 }
 ```
 
