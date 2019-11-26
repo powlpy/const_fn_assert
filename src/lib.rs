@@ -71,17 +71,19 @@ a non-constant version of your functions using normal assertions.
 
 #![forbid(const_err)]
 
+#[allow(dead_code)]
+/// Used by the macros of this crate to check the assertions.
+pub const ASSERT: [(); 1] = [()];
+
+#[inline(always)]
+#[allow(dead_code)]
+/// Used by the macros of this crate to check that the inputs are boolean.
+pub const fn bool_assert(x: bool) -> bool { x }
+
 #[macro_export]
 macro_rules! cfn_assert {
     ($x:expr $(,)*) => {{
-        #[doc(hidden)]
-        const ASSERT: [(); 1] = [()];
-
-        #[inline(always)]
-        #[doc(hidden)]
-        const fn bool_assert(x: bool) -> bool { x }
-
-        let _ = ASSERT[!bool_assert($x) as usize];
+        let _ = $crate::ASSERT[!$crate::bool_assert($x) as usize];
     }};
 }
 
