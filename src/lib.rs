@@ -82,9 +82,9 @@ pub const fn bool_assert(x: bool) -> bool { x }
 
 #[macro_export]
 macro_rules! cfn_assert {
-    ($x:expr $(,)*) => {{
+    ($x:expr $(,)*) => {
         let _ = $crate::ASSERT[!$crate::bool_assert($x) as usize];
-    }};
+    };
 }
 
 #[macro_export]
