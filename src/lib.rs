@@ -62,7 +62,7 @@ const _CONST: u8 = my_const_fn(6); //~ ERROR any use of this value will cause an
 
 # Advices
 
-Since the panic message is not really descriptive, it is advisable to create 
+Since the panic message is not really descriptive, it is advisable to create
 a non-constant version of your functions using normal assertions.
 */
 
@@ -71,19 +71,18 @@ a non-constant version of your functions using normal assertions.
 
 #![forbid(const_err)]
 
-#[doc(hidden)]
-#[allow(dead_code)]
-pub const ASSERT: [(); 1] = [()];
-
-#[doc(hidden)]
-#[allow(dead_code)]
-pub const fn bool_assert(x: bool) -> bool { x }
-
 #[macro_export]
 macro_rules! cfn_assert {
-    ($x:expr $(,)*) => {
-        let _ = $crate::ASSERT[!$crate::bool_assert($x) as usize];
-    };
+    ($x:expr $(,)*) => {{
+        #[doc(hidden)]
+        const ASSERT: [(); 1] = [()];
+
+        #[inline(always)]
+        #[doc(hidden)]
+        const fn bool_assert(x: bool) -> bool { x }
+
+        let _ = ASSERT[!bool_assert($x) as usize];
+    }};
 }
 
 #[macro_export]
