@@ -6,6 +6,12 @@
 ![Minimum rustc version](https://img.shields.io/badge/rustc-1.31+-yellow.svg)
 [![License](https://img.shields.io/crates/l/const_fn_assert.svg)](https://github.com/powlpy/const_fn_assert/blob/master/LICENSE)
 
+<table><tr><td><hr>
+<b>Note:</b> <i>As of Rust 1.57 this crate is superseded by native support for
+panic! in const contexts. Only consider using this crate if you care
+about supporting compilers between 1.31 and 1.57.</i>
+<hr></td></tr></table>
+
 This crate provide macros assertions who can be used in `const` function.
 
 - [Documentation](https://docs.rs/const_fn_assert)

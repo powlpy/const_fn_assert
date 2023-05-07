@@ -1,6 +1,6 @@
 [package]
 name = "const_fn_assert"
-version = "0.1.2"
+version = "0.1.2+deprecated"
 authors = ["Nicolas Poelen"]
 edition = "2018"
 
